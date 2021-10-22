@@ -2,15 +2,12 @@ import turtle
 
 def curve(num):
     for i in range(num):
-        wrp.right(1)
-        wrp.forward(0.4)
-def curvel(num):
-    for i in range(num):
         wrp.left(1)
         wrp.forward(0.4)
 
 wrp = turtle.Turtle()
 wrp.speed(1000)
+wrp.hideturtle()
 
 #set mid position
 wrp.penup()
@@ -23,19 +20,19 @@ wrp.begin_fill()
 wrp.setheading(0)
 wrp.left(15)
 wrp.forward(40)
-curvel(180)
+curve(180)
 wrp.forward(80)
-curvel(45)
+curve(45)
 wrp.end_fill()
 
 #set blue part
 wrp.color("#4285F4")
 wrp.begin_fill()
-curvel(80)
+curve(80)
 wrp.forward(80)
-curvel(180)
+curve(180)
 wrp.forward(80)
-curvel(90)
+curve(90)
 wrp.end_fill()
 
 #set to initial position
@@ -51,22 +48,21 @@ wrp.color("#F4B400")
 wrp.begin_fill()
 wrp.right(150)
 wrp.forward(40)
-curvel(180)
+curve(180)
 wrp.forward(80)
-curvel(45)
+curve(45)
 wrp.end_fill()
 
 #green part
 wrp.color("#0F9D54")
 wrp.begin_fill()
-curvel(80)
+curve(80)
 wrp.forward(80)
-curvel(180)
+curve(180)
 wrp.forward(80)
-curvel(90)
+curve(90)
 wrp.end_fill()
 
-
-
+# wrp.hideturtle()
 
 turtle.done()
