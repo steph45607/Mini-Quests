@@ -1,16 +1,14 @@
 import turtle
-import os
-import math
 import random
 
 #screen
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.title("Space Invaders")
-wn.bgpic("space_invaders_background.gif")
+wn.bgpic("Space Invaders/space_invaders_background.gif")
 
-turtle.register_shape("invader.gif")
-turtle.register_shape("gdsccat.gif")
+turtle.register_shape("Space Invaders/invader.gif")
+turtle.register_shape("Space Invaders/gdsccat.gif")
 
 #border
 border_pen = turtle.Turtle()
@@ -33,14 +31,14 @@ scorepen.speed(0)
 scorepen.color("white")
 scorepen.penup()
 scorepen.setposition(-290,280)
-scorestring = "Score: %s" %score
+scorestring = f"Score: {score}"
 scorepen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
 scorepen.hideturtle()
 
 #player
 player = turtle.Turtle()
 player.color("blue")
-player.shape("gdsccat.gif")
+player.shape("Space Invaders/gdsccat.gif")
 player.penup()
 player.speed(0)
 player.setposition(0,-250)
@@ -72,7 +70,7 @@ for i in range(badnum):
 for bad in badguys:
     #bad guy
     bad.color("red")
-    bad.shape("invader.gif")
+    bad.shape("Space Invaders/invader.gif")
     bad.penup()
     bad.speed(0)
     x = random.randint(-200,200)
@@ -164,7 +162,7 @@ while True:
             bad.setposition(x,y)
             # update score
             score += 10
-            scorestring = "Score: %s" %score
+            scorestring = f"Score: {score}"
             scorepen.clear()
             scorepen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
 
