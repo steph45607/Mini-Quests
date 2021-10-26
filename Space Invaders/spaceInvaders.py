@@ -110,8 +110,9 @@ def fire():
         gun.showturtle()
 
 #collision
-def collision(t1,t2):
-    distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
+def collision(t1: turtle.Turtle,t2: turtle.Turtle):
+    # distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
+    distance = t1.distance(t2)
     if distance < 15:
         return True
     else:
@@ -127,41 +128,41 @@ turtle.onkeyrelease(fire, "space") #assign "space" key to run function fire()
 #game loop
 while True:
     for bad in badguys:
-        #move bad guy
+        # move bad guy
         x = bad.xcor()
         x += badspeed
         bad.setx(x)
 
-        #move bad guy back
+        # move bad guy back
         if bad.xcor() > 280:
-            #move all bad guys down
+            # move all bad guys down
             for b in badguys:
                 y = b.ycor()
                 y -= 40
                 b.sety(y)
-            #change bad guys direction
+            # change bad guys direction
             badspeed *= -1 
         
         if bad.xcor() < -280:
-            #move all bad guys down
+            # move all bad guys down
             for b in badguys:
                 y = b.ycor()
                 y -= 40
                 b.sety(y)
-            #change bad guys direction
+            # change bad guys direction
             badspeed *= -1
-            #check collision between gun and bad
+            # check collision between gun and bad
 
         if collision(gun, bad):
-            #reset gun
+            # reset gun
             gun.hideturtle()
             gunstate = "ready"
             gun.setposition(0,-400)
-            #reset bad
+            # reset bad
             x = random.randint(-200,200)
             y = random.randint(100,250)
             bad.setposition(x,y)
-            #update score
+            # update score
             score += 10
             scorestring = "Score: %s" %score
             scorepen.clear()
@@ -171,22 +172,22 @@ while True:
         if collision(player,bad):
             player.hideturtle()
             bad.hideturtle()
-            print("Game Over")
             break
 
-    #move gun
+    # move gun
     if gunstate == "fire":
         y = gun.ycor()
         y += gunspeed
         gun.sety(y)
 
-    #check gun position top
+    # check gun position top
     if gun.ycor() > 275:
         gun.hideturtle()
         gunstate = "ready"
+    
+print("Game Over")
 
 
 
 
-
-delay = input("Press enter to finsih")
+delay = input("Press enter to finish")
