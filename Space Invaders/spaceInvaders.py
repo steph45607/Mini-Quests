@@ -10,7 +10,7 @@ wn.bgpic("Space Invaders/space_invaders_background.gif")
 turtle.register_shape("Space Invaders/invader.gif")
 turtle.register_shape("Space Invaders/gdsccat.gif")
 
-#border
+# border
 border_pen = turtle.Turtle()
 border_pen.speed(0)
 border_pen.color("white")
@@ -18,13 +18,13 @@ border_pen.penup()
 border_pen.setposition(-300,-300)
 border_pen.pendown()
 border_pen.pensize(3)
-#make the square border
+# make the square border
 for side in range(4):
     border_pen.forward(600)
     border_pen.left(90)
-border_pen.hideturtle() #hide the arrow thingy
+border_pen.hideturtle() # hide the arrow thingy
 
-#score
+# score
 score = 0
 scorepen = turtle.Turtle()
 scorepen.speed(0)
@@ -111,7 +111,7 @@ def fire():
 def collision(t1: turtle.Turtle,t2: turtle.Turtle):
     # distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
     distance = t1.distance(t2)
-    if distance < 15:
+    if distance < 45:
         return True
     else:
         return False
@@ -169,9 +169,24 @@ while True:
         
         if collision(player,bad):
             player.hideturtle()
-            bad.hideturtle()
+            bad.hideturtle() 
+            # print("Game Over")
             break
-
+    if collision(player,bad):
+        player.hideturtle()
+        bad.hideturtle() 
+        print("Game Over")
+        endpen = turtle.Turtle()
+        endpen.color("red")
+        endpen.penup()
+        endpen.setposition(0,0)
+        ending = "Game Over, Press enter to exit"
+        endpen.clear()
+        endpen.write(ending, False, align="center", font=("Arial", 40, "normal"))
+        endpen.hideturtle()
+        break
+    
+  
     # move gun
     if gunstate == "fire":
         y = gun.ycor()
